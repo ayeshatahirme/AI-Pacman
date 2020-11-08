@@ -170,18 +170,17 @@ def breadthFirstSearch(problem):
         if state not in child:
             child.append(state)
 
-        goalState = problem.isGoalState(state)
-        if goalState:
-            return actions
+            goalState = problem.isGoalState(state)
+            if goalState:
+                return actions
 
-        successor = problem.getSuccessors(state)
+            successor = problem.getSuccessors(state)
 
-        for neighbour, direction, steps in successor:
-            if neighbour not in explored:
+            for neighbour, direction, steps in successor:
                 actionsTemp = actions + [direction]
                 exploredTemp = explored + [state]
                 frontier.push((neighbour, actionsTemp , exploredTemp))
-                                
+                                    
     return []
     
 
@@ -200,17 +199,17 @@ def uniformCostSearch(problem):
         if state not in child:
             child.append(state)
 
-        goalState = problem.isGoalState(state)
-        if goalState:
-            return actions
+            goalState = problem.isGoalState(state)
+            if goalState:
+                return actions
 
-        successor = problem.getSuccessors(state)
+            successor = problem.getSuccessors(state)
 
-        for neighbour, direction, steps in successor:
-            actionsTemp = actions + [direction]
-            costTemp = explored + steps
-            frontier.push((neighbour, actionsTemp , costTemp), costTemp)
-                                
+            for neighbour, direction, steps in successor:
+                actionsTemp = actions + [direction]
+                costTemp = explored + steps
+                frontier.push((neighbour, actionsTemp , costTemp), costTemp)
+                
     return []
     
 def nullHeuristic(state, problem=None):
